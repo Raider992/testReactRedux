@@ -33,7 +33,7 @@ export function fetchBooksItem(id){
     return dispatch => {
         return fetch(`/books/${id}`)
             .then( (response) => response.json() )
-            .then( (data) => dispatch(newsItemReceived(data.data)))
+            .then( (data) => dispatch(booksItemReceived(data.data)))
             .catch( (e) => console.log(e) );
     }
 }
