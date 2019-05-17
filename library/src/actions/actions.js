@@ -22,16 +22,16 @@ const booksItemLoading = () => {
 
 export function fetchBooks(booksArray){
     return dispatch => {
-        return fetch(`/books`)
-            .then( (response) => response.json() )
-            .then( (data) => console.log(data))
+        return fetch(`http://localhost:5000/books`)
+            .then( (response) => response.json())
+            .then( (data) => dispatch(booksReceived(data.data)))
             .catch( (e) => console.log(e) );
     }
 }
 
 export function fetchBooksItem(id){
     return dispatch => {
-        return fetch(`/books/${id}`)
+        return fetch(`http://localhost:5000//books/${id}`)
             .then( (response) => response.json() )
             .then( (data) => dispatch(booksItemReceived(data.data)))
             .catch( (e) => console.log(e) );

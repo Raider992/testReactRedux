@@ -7,7 +7,7 @@ class BooksItemListing extends Component {
     render() {
         return (
             <div>
-                <div><Link to={`/books/${this.props.data.id}`}><b>{this.props.data.title}</b></Link></div>
+                <div><Link to={`/books/${this.props.data.id}`}><strong>{this.props.data.title}</strong></Link></div>
                 <div>{this.props.data.author}</div>
             </div>
         )

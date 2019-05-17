@@ -1,4 +1,5 @@
 import React, { Component} from 'react';
+
 import BooksItemDetail from '../presentation/BooksItemDetail';
 import { connect } from 'react-redux';
 import { fetchBooksItem } from '../../actions/actions'
@@ -11,13 +12,13 @@ class BookAnnotation extends Component {
     }
 
     render(){
-        let { booksItem } = this.props;
+        const { booksItem } = this.props;
 
         return (
             <div>
                 <h2>New Story</h2>
                 <ul>
-                    { booksItem ? <BooksItemDetail data={booksItem} /> : null}
+                    { !this.props.booksItemLoading ? <BooksItemDetail data={this.props.booksItem} /> : <p>Loading</p>}
                 </ul>
             </div>
         )
@@ -26,7 +27,8 @@ class BookAnnotation extends Component {
 
 const mapStateToProps = state => {
     return {
-        booksItem: state.books.booksItem
+        booksItem: state.books.booksItem,
+        booksItemLoading: state.books.booksItemLoading
     }
 }
 

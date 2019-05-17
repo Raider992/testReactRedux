@@ -1,13 +1,15 @@
 import React, {Component} from 'react';
-import './App.css';
 import {Route, BrowserRouter} from 'react-router-dom';
+import {Provider} from 'react-redux';
+
 import Home from './components/layouts/Home';
 import About from './components/layouts/About';
 import Layout from './components/layouts/Layout';
 import BooksItemDetail from './components/presentation/BooksItemDetail';
-import {Provider} from 'react-redux';
 import store from './stores/store';
 import BookAnnotation from './components/containers/BookAnnotation';
+
+import './App.css';
 
 
 class App extends Component {
