@@ -1,7 +1,9 @@
 import constants from '../constants/actionTypes'
 
 var initialState = {
-    books: []
+    books: [],
+    booksItem: {},
+    booksItemLoading: true
 };
 
 export default (state = initialState, action) => {
@@ -12,10 +14,12 @@ export default (state = initialState, action) => {
 
         case constants.BOOKS_RECEIVED:
             updated['books'] = action.books;
+            updated['booksItemLoading'] = false;
             return updated;
 
         case constants.BOOKSITEM_RECEIVED:
             updated['booksItem'] = action.booksItem;
+            updated['booksItemLoading'] = false;
             return updated ;
 
         case constants.BOOKSITEM_LOADING:

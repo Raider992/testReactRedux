@@ -1,22 +1,12 @@
 const express = require('express');
 const router = express.Router();
-import booksArray from '../libContent';
 
-router.get('/', function(req, res, next) {
-    res.status(200).send({
-        data: booksArray
-    })
-});
+const controller = require('../controllers/booksController');
 
-router.get('/:id', function(req, res, next){
-    const id = req.params.id;
+console.log(controller.all);
 
-    const bookByID = booksArray.find(o => o.id === id);
+router.get('/books', controller.all);
 
-    res.status(200).send({
-        data: bookByID
-    })
-
-});
+router.get('/books/:id', controller.byId);
 
 module.exports = router;

@@ -1,14 +1,26 @@
 const express = require('express');
-const routes = require('./routes/index');
-const booksRoute = require('./routes/books');
 
-let app = express();
-const PORT = process.env.PORT || 5000;
+const bookRoutes = require('./routes/books');
 
-app.use('/', routes);
+const PORT = require('./constants/appConst')
 
-app.use('/books', booksRoute);
 
-app.listen(PORT, function () {
-    console.log(`Listening on port ${PORT}`);
+const app = express();
+
+app.get('/', (req, res) => {
+    res.send('Hello ;-)');
 });
+
+app.use((req, res, next) => {
+    res.append('Access-Control-Allow-Origin', ['*']);
+    next();
+});
+
+app.get('/books', bookRoutes);
+
+app.get('/books/:id', bookRoutes);
+
+app.listen(PORT, () => {
+    console.log('API started');
+});
+
