@@ -6,15 +6,17 @@ import {fetchBooks} from '../../actions/actions';
 class Books extends Component {
 
     componentDidMount() {
-
         this.props.dispatch(fetchBooks());
+        console.log('books_props', this.props);
     }
 
     render() {
-
+        console.log('books_props', this.props);
         const booksItems = this.props.books.map((books, i) => {
             return (<li key={i}><BooksItemListing data={books}/></li>);
         });
+
+        console.log(this.props);
 
         return (
             <div>

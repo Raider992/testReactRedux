@@ -20,20 +20,20 @@ const booksItemLoading = () => {
     }
 };
 
-export function fetchBooks(booksArray){
+export function fetchBooks(){
     return dispatch => {
         return fetch(`http://localhost:5000/books`)
-            .then( (response) => response.json())
-            .then( (data) => dispatch(booksReceived(data.data)))
-            .catch( (e) => console.log(e) );
+            .then( response => {return response.json()})
+            .then( data => {console.log('data', data); return dispatch(booksReceived(data))})
+            .catch( e => console.log(e));
     }
 }
 
 export function fetchBooksItem(id){
     return dispatch => {
-        return fetch(`http://localhost:5000//books/${id}`)
+        return fetch(`http://localhost:5000/books/${id}`)
             .then( (response) => response.json() )
-            .then( (data) => dispatch(booksItemReceived(data.data)))
+            .then( (data) => dispatch(booksItemReceived(data)))
             .catch( (e) => console.log(e) );
     }
 }

@@ -1,23 +1,12 @@
 const express = require('express');
 const router = express.Router();
 
-[booksarray]
+const controller = require('../controllers/booksController');
 
-router.get('/books', function(req, res, next) {
-    res.status(200).send({
-        data: booksArray
-    })
-});
+console.log(controller.all);
 
-router.get('/books/:id', function(req, res, next){
-    const id = req.params.id;
+router.get('/books', controller.all);
 
-    const bookByID = booksArray.find(o => o.id === id);
-
-    res.status(200).send({
-        data: bookByID
-    })
-
-});
+router.get('/books/:id', controller.byId);
 
 module.exports = router;

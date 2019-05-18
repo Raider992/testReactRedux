@@ -5,9 +5,10 @@ import {Link} from 'react-router-dom';
 
 class BooksItemListing extends Component {
     render() {
+        console.log('123', this.props.data);
         return (
             <div>
-                <div><Link to={`/books/${this.props.data.id}`}><strong>{this.props.data.title}</strong></Link></div>
+                <div><Link to={`/books/${this.props.data.id}`}><strong>{this.props.data.name}</strong></Link></div>
                 <div>{this.props.data.author}</div>
             </div>
         )
@@ -17,7 +18,7 @@ class BooksItemListing extends Component {
 BooksItemListing.propTypes = {
     data: PropTypes.shape({
         id: PropTypes.number.isRequired,
-        title: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
         author: PropTypes.string.isRequired,
         desc: PropTypes.string
     })

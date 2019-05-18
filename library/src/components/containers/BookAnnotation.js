@@ -13,7 +13,6 @@ class BookAnnotation extends Component {
 
     render(){
         const { booksItem } = this.props;
-
         return (
             <div>
                 <h2>New Story</h2>
